@@ -5,6 +5,7 @@ BUILD_DIR	:=	$(TOPDIR)/build
 OBJ_DIR		:=	$(BUILD_DIR)/obj/$(TARGET)
 DEF_DIR		:=	$(BUILD_DIR)/def/$(TARGET)
 BIN_DIR		:=	$(BUILD_DIR)/bin
+ELF_DIR		:=	$(BUILD_DIR)/elf
 MAP_DIR		:=	$(BUILD_DIR)/map
 ASM_DIR		:=	$(BUILD_DIR)/asm
 

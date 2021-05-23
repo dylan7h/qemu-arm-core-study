@@ -25,8 +25,8 @@ INSTRUCTION_SET	:=	arm
 #============================================================
 # Set Compile & Link Options by Configurations
 #============================================================
-CFLAGS		:= -march=$(ARCH) -mtune=$(CPU) -m$(INSTRUCTION_SET) -std=c$(C_STANDARD_VER) -Wall
-LDFLAGS		:= -nostdlib -nostartfiles -nodefaultlibs -static
+CFLAGS			:= -march=$(ARCH) -mtune=$(CPU) -m$(INSTRUCTION_SET) -std=c$(C_STANDARD_VER) -Wall
+LDFLAGS			:= -nostdlib -nostartfiles -nodefaultlibs -static
 
 ifeq ($(BUILD_MODE), debug)
 	CFLAGS		+= -g
@@ -37,5 +37,5 @@ else
 endif
 
 ifeq ($(BUILD_VERBOSE), 0)
-	V	:=	@
+	V			:=	@
 endif
