@@ -1,20 +1,29 @@
-export TARGET	:= BL1
+export TARGET	:= realview-pb-a8
 export TOPDIR	:= ..
 
-all:
+TEST_VAR		:= 10
+
+all: setting
 	@$(MAKE) -C $(TARGET) --no-print-directory
 
-clean:
+clean: setting
 	@$(MAKE) -C $(TARGET) clean --no-print-directory
 
 distclean:
 	rm -rf build/*
 
-run:
+run: setting
 	@$(MAKE) -C $(TARGET) run --no-print-directory
 
-debug:
+debug: setting
 	@$(MAKE) -C $(TARGET) debug --no-print-directory
 
-info:
+info: setting
 	@$(MAKE) -C $(TARGET) info --no-print-directory
+
+setting:
+	@rm -rf .vscode/settings.json
+	@touch .vscode/settings.json
+	@echo "{" >> .vscode/settings.json
+	@printf "\t\"BUILD_TARGET\": %s\n" "\"$(TARGET)\"" >> .vscode/settings.json
+	@echo "}" >> .vscode/settings.json

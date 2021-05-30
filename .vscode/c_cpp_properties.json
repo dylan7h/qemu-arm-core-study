@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/clang",
+            "compilerPath": "/opt/gcc-arm-10.2-2020.11-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc",
             "cStandard": "c11",
             "intelliSenseMode": "gcc-arm"
         }

@@ -31,17 +31,20 @@ clean:
 	$(V)rm -rf $(MAP_DIR)/$(TARGET).map
 	$(V)rm -rf $(ASM_DIR)/$(TARGET).asm
 
+
 #============================================================
 # Run Target
 #============================================================
 run: all
 	qemu-system-arm -M realview-pb-a8 -kernel $(ELF_DIR)/$(TARGET).$(FILE_EXT)
 
+
 #============================================================
 # Debug Target
 #============================================================
 debug: all
 	qemu-system-arm -M realview-pb-a8 -kernel $(ELF_DIR)/$(TARGET).$(FILE_EXT) -S -gdb tcp::1234,ipv4
+
 
 #============================================================
 # Link Object files --> Make ELF File
@@ -87,7 +90,7 @@ mkdir:
 # Make dependency files
 #============================================================
 # From *.s files
-$(DEF_DIR)/%.d: %.s
+$(DEF_DIR)/%.d: %.S
 	@mkdir -p $(dir $@)
 	$(V)$(CC) $(INCS) $(CFLAGS) -M $< > $@
 
@@ -101,7 +104,7 @@ $(DEF_DIR)/%.d: %.c
 # Compile Source files
 #============================================================
 # From *.s files
-$(OBJ_DIR)/%.o:	%.s
+$(OBJ_DIR)/%.o:	%.S
 	@mkdir -p $(dir $@)
 	@printf "%-10s $<\n" "AS"
 	$(V)$(CC) $(INCS) $(CFLAGS) -c $< -o $@ -MMD -MF $(DEF_DIR)/$*.d
@@ -128,3 +131,4 @@ info:
 	$(info AFLAGS   : $(AFLAGS))
 	$(info CFLAGS   : $(CFLAGS))
 	$(info LDFLAGS  : $(LDFLAGS))
+
